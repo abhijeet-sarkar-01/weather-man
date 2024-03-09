@@ -1,0 +1,151 @@
+*{
+  margin: 0;
+}
+
+body{
+  background-color: #030917;
+}
+
+header{
+  padding: 0 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #1E293B;
+  height: 4rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.brand-logo{
+  width: 2rem;
+}
+
+.brand-name{
+  color: #F4F5F4;
+  /* letter-spacing: .05rem; */
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.credits{
+  color: #F4F5F4;
+}
+
+.credits a{
+  color: #2462EB;
+  text-decoration: none;
+}
+
+/* Form */
+
+form{
+  display: flex;
+  gap: 1rem;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin: 2%;
+  padding: 0 4%;
+}
+
+.input-field{
+  text-indent: 1rem;
+  width: 90%;
+  height: 2.5rem;
+  background-color: transparent;
+  border: 1px solid #1E293B;
+  border-radius: 5px;
+  color: #F4F5F4;
+  font-family: "Poppins", sans-serif;
+  font-size: .9rem;
+}
+
+.submit-btn{
+  width: 7rem;
+  height: 2.75rem;
+  font-family: "Poppins", sans-serif;
+  background-color: #2462EB;
+  border: none;
+  border-radius: 5px;
+  color: #F4F5F4;
+}
+
+/* Display */
+
+.display{
+  font-family: "Poppins", sans-serif;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #F4F5F4;
+  width: 88%;
+  border: 1px solid white;
+}
+
+.display-header{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid white;
+}
+
+.main-info{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgb(255, 99, 99);
+
+}
+
+.temp{
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: 1px solid rgb(56, 255, 89);
+
+}
+
+.icon{
+  width: 5rem;
+  height: 5rem;
+}
+
+.weather-icon{
+  width: 80px;
+  height: 80px;
+}
+
+.aqi{
+  border: 1px solid rgb(56, 255, 89);
+}
+
+.other-info{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+/* mobile */
+
+@media (width <= 550px) {
+  .credits{
+    display: none;
+  }
+}
+
+@media (width <= 768px) {
+  .credits{
+    font-size: .8rem;
+  }
+}

@@ -1,0 +1,126 @@
+<%- include("partials/header.ejs") %>
+
+  <form action="/submit" method="post">
+    <input type="text" class="input-field" placeholder="Enter a city, latitude/longitude(Decimal Degree) or US/UK postal code..." autofocus name="city" required>
+    <input type="submit" name="" class="submit-btn" value="Search"> 
+  </form>
+
+  <% if(locals.data){ %>
+  <div class="display">
+
+    <div class="display-header">
+      <p class="location"><%= data.location.name%>, <%= data.location.region%>, <%= data.location.country %></p>
+      <p class="time"><%= data.location.localtime %></p>
+    </div>
+
+    <div class="main-info">
+
+      <div class="temp">
+        <div class="icon">
+          <img class = "weather-icon" src="<%= data.current.condition.icon %>" alt="<%= data.current.condition.text %>">
+        </div>
+
+        <div class="temp-value">
+          <p class="celcius"><%= data.current.temp_c %>°C</p>
+          <p class="feels-like">Feels like <%= data.current.feelslike_c %>°C</p>
+          <p class="weather-desc"><%= data.current.condition.text %></p>
+        </div>
+      </div>
+      
+      <div class="aqi">
+        <table class="aqi-table">
+          <tbody>
+            <tr>
+              <td>Air Quality</td>
+              <td><%= epa %></td>
+            </tr>
+            <tr>
+              <td>PM2.5</td>
+              <td><%= data.current.air_quality.pm2_5 %> μg/m³</td>
+            </tr>
+            <tr>
+              <td>PM10</td>
+              <td><%= data.current.air_quality.pm10 %> μg/m³</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="other-info">
+      <div class="left">
+
+        <table class="left-table">
+          <tbody>
+            <tr>
+              <td>Wind Speed 💨</td>
+              <td><%= data.current.wind_kph %> km/h</td>
+            </tr>
+            <tr>
+              <td>Wind Direction</td>
+              <td><%= data.current.wind_degree %> <%= data.current.wind_dir %></td>
+            </tr>
+            <tr>
+              <td>Pressure</td>
+              <td><%= data.current.pressure_mb %> mB</td>
+            </tr>
+          </tbody>
+          </table>
+      </div>
+
+      <div class="right">
+
+        <table class="right-table">
+          <tbody>
+            <tr>
+              <td>Precipitation🌧</td>
+              <td><%= data.current.precip_mm %> mm</td>
+            </tr>
+            <tr>
+              <td>Humidity</td>
+              <td><%= data.current.humidity %>%</td>
+            </tr>
+            <tr>
+              <td>Visibility</td>
+              <td><%= data.current.vis_km %>km</td>
+            </tr>
+          </tbody>
+          </table>
+      </div>
+    </div>
+
+  </div>
+  <% } else { %>
+    <div class="error-container">
+    <% if (locals.errorMessage){ %>
+      <p class="error"><%= errorMessage %></p>
+      <br>
+      <p>Possible fixes:</p>
+      <ul>
+        <li>Recheck the city name and make sure it is correct.</li>
+        <li>Check the latitude/logitude values for mistakes (Accepted format: 43.90694444, 18.41583333)</li>
+        <li>Check the zip/post codes.</li>
+        <li>If nothing works, try again after some time.</li>
+      </ul>
+    <% } else { %>
+      <p class="error">Welcome to WeatherMan.
+        <p>WeatherMan can accurately display the weather of all major and minor cities of the world.</p>
+        <br>
+        <p>To start using the service, search ANY ONE of the following options in the search box above.</p>
+        <br>
+        <ul>
+          <li>City Name</li>
+          <li>Longitude/Latitude (Decimal degree format)</li>
+          <li>US zipcode</li>
+          <li>UK postcode</li>
+          <li>Canadian postal code</li>
+          <li>IP Address</li>
+        </ul>
+      </p>
+      
+    <% }%>
+    </div>
+  
+  <% } %>
+
+<%- include("partials/footer.ejs") %>
